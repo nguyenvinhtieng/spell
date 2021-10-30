@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,700;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+html {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Urbanist', sans-serif;
+}
+
+input,
+textarea,
+select,
+button {
+    outline: none;
+}
+
+input {
+    line-height: normal;
+}
+
+label,
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.wrapper {
+    background-color: #fff;
+}
+
+.container {
+    min-height: 100vh;
+    padding: 16px;
+}
+
+.heading {
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.heading-title {
+    font-size: 32px;
+}
+
+.list-word {
+    margin-top: 16px;
+}
+
+.item {
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #0396ff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    margin-top: 16px;
+    width: 100%;
+}
+
+.word-book {
+    font-size: 60px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.spell {
+    display: flex;
+    justify-content: center;
+}
+
+.start ion-icon {
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    width: 50px;
+    height: 25px;
+    background: #999;
+    border-radius: 16px;
+    z-index: 10;
+    padding: 4px;
+    border: 1px solid #999;
+}
+
+.toggle:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    border-radius: 50%;
+    transition: all .25s linear;
+}
+
+#chbToggle:checked~.toggle:before {
+    background: #28c76f;
+    transform: translateX(100%)
+}
+
+#chbToggle:checked~.toggle {
+    background: #fff;
+}
+
+#chbToggle:checked~* {
+    font-family: 'Dancing Script', cursive;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 0;
+}
+
+
+/* arduino uno,arduino esp32,arduino 8266 */
