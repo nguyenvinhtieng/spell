@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinh Tiếng</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .heading {
+            background-color: #28c76f;
+            color: #fff
+        }
+
+        #chbToggle:checked~.toggle:before {
+            background-color: #0396ff
+        }
+
+        .item {
+            border: 1px solid #28c76f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input type="checkbox" hidden id="chbToggle">
+        <label for="chbToggle" class="toggle"></label>
+        <div class="container">
+            <div class="heading">
+                <a href="./index.html">Back</a>
+                <div class="heading-title">Đọc chữ</div>
+                <div class="name">Tên: Nguyễn Thị Lanh</div>
+                <div>Chọn chủ đề</div>
+            </div>
+            <div class="list-word">
+
+            </div>
+        </div>
+        <div class="center">
+            Bổ sung sau
+        </div>
+    </div>
+
+    <script>
+        let words = ['ba', 'ca', 'cà', 'cá', 'bò', 'cỏ', 'có', 'bơ', 'cọ', 'bờ', 'bọ', 'cá cờ', 'cô', 'cỗ', 'cổ', 'bố', 'vở', 'vỡ',
+            'võ', 'vỏ', 'bé', 'bế', 'vẽ', 'bê', 'bé', 'vé', 'dế', 'đỗ', 'dê', 'dẻ', 'bờ đê', 'bi', 'kệ', 'dì', 'kê', 'bí đỏ', 'ví da', 'lá', 'hẹ', 'lọ', 'lê', 'hồ', 'le le', 'chợ', 'khế', 'chả cá', 'cá kho', 'cá khô', 'chà là', 'nơ', 'me',
+            'na', 'mơ', 'ca nô', 'cá mè', 'mũ', 'chữ', 'cá mú', 'đỏ lừ', 'đu đủ', 'cá hú', 'gà', 'ghế', 'ga', 'gà gô', 'ghẹ', 'ghi', 'ngừ', 'cá ngừ', 'nghệ', 'củ nghệ', 'ngủ', 'nghỉ', 'ngô', 'nghé', 'tủ', 'thỏ', 'nhà', 'tê tê', 'cá thu', 'nho đỏ', 'rổ', 'tre', 'rá', 'gà tre', 'cá rô', 'cá trê', 'mía', 'nĩa', 'tía tô', 'chả chìa', 'cá lia thia', 'đũa', 'dừa', 'rùa', "cửa", 'cua', 'lúa', 'pa nô', 'phi ngựa', 'phở', 'phố', 'cà phê', 'pa tê', 'sư tử', 'xe ngựa', 'sẻ', 'chó xù', 'su su', 'xô nhựa', 'quà', 'y sĩ', 'que', 'dã quỳ', 'quạ', 'quả lê', 'giá vẽ', "gió", 'giò lụa', 'cụ già', 'giỏ tre', 'chào', 'chèo', 'sào', 'kéo co', 'đi cà kheo', 'báo thể thao'
+        ]
+
+
+        let lessons = {
+            chude: [
+                {
+                    "Chủ đề 1: Những bài học đầu tiên": [
+                        { "Bài 5 ôn tập": ['a', 'b', 'c', 'ba', 'bà', 'bá', "bả", 'bo', 'bò', 'bó', 'bỏ', 'ca', 'cà', 'cá', 'cả', 'co', 'cò', 'cỏ', 'ba ba', 'bó cỏ', 'cá bò'] }
+                    ]
+                },
+                {
+                    "Chủ đề 2: Bé và bà": [
+                        { "Bài 1: Ơ ơ": ['ơ', 'bơ', "bờ", 'bớ', "bợ", 'bở', 'cọ', 'bọ', 'cơ', 'cờ', "cớ", 'cá cờ'] },
+                        { "Bài 2: Ô ô": ['ô', 'cô', 'cố', 'cỗ', 'cổ', 'cộ', 'bô', 'bồ', 'bố', 'bổ', 'bỗ', 'bô bô', 'bỗ bà'] },
+                        { "Bài 3: V v": ['v', 'vo', 'vỏ', 'võ', 'vọ', 'vô', 'vồ', 'vố', 'vổ', 'vỗ', 'vơ', 'vờ', "vớ", 'vở', 'vỡ', 'vợ', 'vơ cỏ', "cỏ bợ"] },
+                        { "Bài 4: E e": ['e', 'ê', 'bé', "be bé", 'bé bé', 'bè bè', 'bế bé', 'vó bè', 'vỗ về', 'vẽ ve', 'bể cá'] },
+                        { "Bài 5: Ôn tập": ['ơ', 'ô', 'v', 'e', 'ê', 'cổ cò', 'vở vẽ', 'vỗ về', 'vo ve', 'bé ba'] },
+                    ]
+                },
+                {
+                    "Chủ đề 3: Đi chợ": [
+                        { "Bài 1: d, đ": ['d', 'đ', 'dế', 'đỗ', 'dê', 'dẻ', 'bờ đê', 'da dê', 'lá đa', 'đá dế', 'bờ đê', 'bộ đồ', 'đỗ đỏ'] },
+                        { "Bài 2: i, k": ['i', 'k', 'bí', 'kệ', 'bí đỏ', 'ví da', 'bi ve', 'kì cọ', 'kẻ vở', 'bó kê', 'kì đà'] },
+                        { "Bài 3: l, h": ['l', 'h', 'lá', 'hẹ', 'lọ', 'lê', 'hồ', 'le le', 'lá hẹ', 'ba lô', 'lọ hồ', 'lề vở', 'bờ hồ', 'va li', 'lí lẽ', 'li kì', 'kẽ hở'] },
+                        { "Bài 4: ch, kh": ['ch', 'kh', 'chợ', 'khế', 'chả cá', 'cá khô', 'cá kho', 'chà là', 'khe đá', 'che chở', 'khệ lệ'] },
+                        { "Bài 5: Ôn tập": ['d', 'd', 'i', 'k', 'l', 'h', 'ch', 'kh', 'da dê', 'đá dế', 'bờ kê', 'lá cờ', 'bờ hồ', 'kì đà', 'kể lể'] },
+                    ]
+                },
+                {
+                    "Chủ đề 4: Kì nghỉ": [
+                        { "Bài 1: n, m": ['n', 'm', 'nơ', 'me', 'na', 'mơ', 'ca nô', 'cá mè', 'lọ mỡ', 'no nê', 'bố mẹ', 'ba má', 'bó mạ', 'lơ mơ', 'mò cá'] },
+                        { "Bài 2: u, ư": ['u', 'ư', 'mũ', 'chữ', 'cá mú', 'đỏ lừ', 'đu đủ', 'cá hú', 'cú vọ', 'vi vu', 'khu chợ'] },
+                        { "Bài 3: g, gh": ['g', 'gh', 'gà', 'ghế', 'ga', 'ghẹ', 'gà gô', 'ghi', 'gà ta', 'gõ mõ', 'ghế gỗ', 'gồ ghề'] },
+                        { "Bài 4: ng, ngh": ['ng', 'ngh', 'cá ngừ', 'củ nghệ', 'ngủ', 'nghĩ', 'ngô', 'nghé ọ', 'ngô nghê', 'nghỉ hè', 'ngờ ngợ'] },
+                        { "Bài 5: Ôn tập": ['m', 'n', 'u', 'ư', 'g', 'gh', 'ng', 'ngh', 'ghe lở', 'lờ mờ', 'nô lệ', 'ba lô', 'nghi ngờ', 'nhà sư', 'mỏ đá', 'cá lù đù', 'kì nghỉ hè'] },
+                    ]
+                }
+            ]
+        }
+
+        let main = document.querySelector('.list-word')
+        /*
+        words.forEach(function (word) {
+            let div = document.createElement('div')
+            div.className = 'item'
+            div.innerHTML = `<div class="word-book">${word}</div>
+                    <div class="spell">
+                        <audio controls>
+                            <source src="./audio/${word}.m4a" type="audio/mpeg">
+                        </audio>
+                    </div>`
+            main.appendChild(div)
+        }) */
+
+        function render() {
+            lessons.chude.forEach(function (data, index) {
+                let div = document.createElement('div')
+                div.className = 'item theme'
+                div.setAttribute('data-index', index)
+                div.innerHTML = `<div class="word-book name-theme">${Object.keys(data)[0]}</div>`
+                main.appendChild(div)
+            })
+            eventClickTheme()
+        }
+
+        function eventClickTheme() {
+            let themes = document.querySelectorAll('.theme')
+            themes.forEach(function (theme) {
+                theme.addEventListener('click', () => {
+                    let index = theme.getAttribute('data-index')
+                    getLesson(index)
+                })
+            })
+        }
+
+        function getLesson(id) {
+            lessons.chude.forEach(function (data, index) {
+                if (index == id) {
+                    renderLesson(Object.values(data), index)
+                }
+            })
+        }
+        function renderLesson(data, index) {
+            main.innerHTML = ''
+            Object.values(data[0]).forEach((d, i) => {
+                console.log(Object.keys(d)[0])
+                let div = document.createElement('div')
+                div.className = 'item ls'
+                div.setAttribute('data-idlesson', i)
+                div.innerHTML = `<div class="word-book name-theme">${Object.keys(d)[0]}</div>`
+                main.appendChild(div)
+            })
+            loadEventClickLesson(index)
+        }
+        function loadEventClickLesson(index) {
+            let les = document.querySelectorAll('.ls')
+            les.forEach(function (ls) {
+                ls.addEventListener('click', () => {
+                    let i = ls.getAttribute('data-idlesson')
+                    renderWord(index, i)
+                })
+            })
+        }
+        function renderWord(index, i) {
+            main.innerHTML = ''
+            let arr = Object.values(Object.values(Object.values(lessons.chude[index])[0])[i])
+            arr[0].forEach(w => {
+                let div = document.createElement('div')
+                div.className = 'item'
+                div.innerHTML = `<div class="word-book">${w}</div>
+                    <div class="spell">
+                        <audio controls>
+                            <source src="./audio/${w}.aac" type="audio/mpeg">
+                        </audio>
+                    </div>`
+                main.appendChild(div)
+            })
+        }
+        render()
+    </script>
+
+</body>
+
+</html>

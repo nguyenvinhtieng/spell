@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,700;1,300;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,700;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
 html {
     box-sizing: border-box;
 }
@@ -16,7 +16,7 @@ html {
 }
 
 body {
-    font-family: 'Urbanist', sans-serif;
+    font-family: "Urbanist", sans-serif;
 }
 
 input,
@@ -46,6 +46,7 @@ img {
 
 .wrapper {
     background-color: #fff;
+    min-width: 100%;
 }
 
 .container {
@@ -116,20 +117,20 @@ img {
     height: 100%;
     background: #fff;
     border-radius: 50%;
-    transition: all .25s linear;
+    transition: all 0.25s linear;
 }
 
-#chbToggle:checked~.toggle:before {
+#chbToggle:checked ~ .toggle:before {
     background: #28c76f;
-    transform: translateX(100%)
+    transform: translateX(100%);
 }
 
-#chbToggle:checked~.toggle {
+#chbToggle:checked ~ .toggle {
     background: #fff;
 }
 
-#chbToggle:checked~* {
-    font-family: 'Dancing Script', cursive;
+#chbToggle:checked ~ * {
+    font-family: "Dancing Script", cursive;
 }
 
 .center {
@@ -138,6 +139,51 @@ img {
     align-items: center;
     margin: 16px 0;
 }
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
+.header {
+    font-size: 32px;
+}
 
+.btn {
+    padding: 16px 32px;
+    font-size: 16px;
+    background-color: #0396ff;
+    width: 200px;
+    color: #fff;
+    margin: 24px 0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-primary {
+    background-color: #0396ff;
+}
+
+.btn-secondary {
+    background-color: #28c76f;
+}
+
+.btn-third {
+    background-color: #de4313;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+.name-theme {
+    font-size: 24px;
+}
 /* arduino uno,arduino esp32,arduino 8266 */

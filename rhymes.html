@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinh Tiếng</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .heading {
+            background-color: #0396ff;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input type="checkbox" hidden id="chbToggle">
+        <label for="chbToggle" class="toggle"></label>
+        <div class="container">
+            <div class="heading">
+                <a href="./index.html">Back</a>
+                <div class="heading-title">Đọc âm / vần</div>
+                <div class="name">Tên: Nguyễn Thị Lanh</div>
+            </div>
+            <div class="list-word">
+
+            </div>
+        </div>
+        <div class="center">
+            Bổ sung sau
+        </div>
+    </div>
+
+    <script>
+        words = ['a', 'b', 'c', 'o', 'ơ', 'ô', 'v', 'e', 'ê', 'd', 'đ', 'i', 'k', 'l', 'h', 'ch', 'kh',
+            'n', 'm', 'u', 'ư', 'g', 'gh', 'ng', 'ngh', 't', 'th', 'nh', 'r', 'tr', 'ia', 'ua', 'ưa', 'p',
+            'ph', 's', 'x', 'qu', 'y', 'gi', 'ao', 'eo'
+        ]
+
+        let main = document.querySelector('.list-word')
+
+        words.forEach(function (word) {
+            let div = document.createElement('div')
+            div.className = 'item'
+            div.innerHTML = `<div class="word-book">${word}</div>
+                    <div class="spell">
+                        <audio controls>
+                            <source src="./audio/${word}.aac" type="audio/mpeg">
+                        </audio>
+                    </div>`
+            main.appendChild(div)
+        })
+
+        let btnToggle = document.getElementById('chbToggle')
+    </script>
+
+</body>
+
+</html>
