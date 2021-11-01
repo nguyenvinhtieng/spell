@@ -12,6 +12,14 @@
             background-color: #0396ff;
             color: #fff;
         }
+
+        .btn-secondary {
+            font-size: 16px;
+            padding: 8px 16px;
+            width: fit-content;
+            outline: none;
+            border: none;
+        }
     </style>
 </head>
 
@@ -24,6 +32,7 @@
                 <a href="./index.html">Back</a>
                 <div class="heading-title">Đọc dấu</div>
                 <div class="name">Tên: Nguyễn Thị Lanh</div>
+                <button class="btn btn-secondary" onclick="render()">Resest</button>
             </div>
             <div class="list-word">
 
@@ -35,23 +44,34 @@
     </div>
 
     <script>
-        let words = ['//','\','?','/~','.']
-let sounds = ['dausat','dauhuyen','dauhoi','daunga','daunang']
+        let words = ['/', '\\', '?', '~', '.']
+        let sounds = ['dausat', 'dauhuyen', 'dauhoi', 'daunga', 'daunang']
         let main = document.querySelector('.list-word')
-
-        words.forEach(function (word, index) {
-            let div = document.createElement('div')
-            div.className = 'item'
-            div.innerHTML = `<div class="word-book">${word}</div>
+        function render() {
+            main.innerHTML = ''
+            let arrtemp = []
+            while (arrtemp.length < 5) {
+                let i = (Math.random() * 4).toFixed(0)
+                if (arrtemp.includes(i)) {
+                    continue
+                } else {
+                    arrtemp.push(i)
+                    let div = document.createElement('div')
+                    div.className = 'item'
+                    div.innerHTML = `<div class="word-book">${words[i]}</div>
                     <div class="spell">
                         <audio controls>
-                            <source src="./audio/${sounds[index]}.aac" type="audio/mpeg">
+                            <source src="./audio/${sounds[i]}.aac" type="audio/mpeg">
                         </audio>
                     </div>`
-            main.appendChild(div)
-        })
+                    main.appendChild(div)
+                }
 
-        let btnToggle = document.getElementById('chbToggle')
+            }
+
+        }
+        render()
+
     </script>
 
 </body>
