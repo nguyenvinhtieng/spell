@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinh Tiếng</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .heading {
+            background-color: #0396ff;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            font-size: 16px;
+            padding: 8px 16px;
+            width: fit-content;
+            outline: none;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input type="checkbox" hidden id="chbToggle">
+        <label for="chbToggle" class="toggle"></label>
+        <div class="container">
+            <div class="heading">
+                <a href="./index.html">Back</a>
+                <div class="heading-title">Đọc dấu</div>
+                <div class="name">Tên: Nguyễn Thị Lanh</div>
+                <button class="btn btn-secondary" onclick="render()">Resest</button>
+            </div>
+            <div class="list-word">
+
+            </div>
+        </div>
+        <div class="center">
+            Bổ sung sau
+        </div>
+    </div>
+
+    <script>
+        let words = ['/', '\\', '?', '~', '.']
+        let sounds = ['dausat', 'dauhuyen', 'dauhoi', 'daunga', 'daunang']
+        let main = document.querySelector('.list-word')
+        function render() {
+            main.innerHTML = ''
+            let arrtemp = []
+            while (arrtemp.length < 5) {
+                let i = (Math.random() * 4).toFixed(0)
+                if (arrtemp.includes(i)) {
+                    continue
+                } else {
+                    arrtemp.push(i)
+                    let div = document.createElement('div')
+                    div.className = 'item'
+                    div.innerHTML = `<div class="word-book">${words[i]}</div>
+                    <div class="spell">
+                        <audio controls>
+                            <source src="./audio/dau/${sounds[i]}.aac" type="audio/mpeg">
+                        </audio>
+                    </div>`
+                    main.appendChild(div)
+                }
+
+            }
+
+        }
+        render()
+
+    </script>
+
+</body>
+
+</html>
