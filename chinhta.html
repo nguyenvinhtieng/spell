@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinh Tiếng</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .main {
+            border: 1px solid #7367F0;
+            margin: 6px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .block-btn {
+            background-color: #0396ff;
+            padding: 8px 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn {
+            padding: 6px 5px;
+            background-color: #EA5456;
+            flex: 1;
+            margin: 0;
+            border: none;
+            outline: none;
+        }
+
+        .container {
+            max-width: 400px;
+        }
+
+        #word {
+            border: 1px solid #F8D800;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+        }
+
+        .btn-view {
+            padding: 6px 8px;
+            margin: 50px 0 12px 0;
+            border: none;
+            outline: none;
+            background-color: #DE4313;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input type="checkbox" hidden id="chbToggle">
+        <label for="chbToggle" class="toggle"></label>
+        <div class="container">
+            <div class="heading">
+                <a href="./index.html">Back</a>
+                <div class="heading-title">Chép chính tả</div>
+                <div class="name">Tên: Nguyễn Thị Lanh</div>
+            </div>
+            <div class="block-btn">
+                <button class="btn btn-random">Random</button>
+                <button class="btn btn-next">Next</button>
+            </div>
+            <div class="main">
+                <div class="sound">
+                    <audio controls>
+                        <source class="sound" src="./audio/a.aac" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <button class="btn-view">Xem đáp án</button>
+
+            <div id="word">
+                a
+            </div>
+        </div>
+    </div>
+
+    <script>
+        words = ['a', 'b', 'c', 'o', 'ơ', 'ô', 'v', 'e', 'ê', 'd', 'đ', 'i', 'k', 'l', 'h', 'ch', 'kh',
+            'n', 'm', 'u', 'ư', 'g', 'gh', 'ng', 'ngh', 't', 'th', 'nh', 'r', 'tr', 'ia', 'ua', 'ưa', 'p',
+            'ph', 's', 'x', 'qu', 'y', 'gi', 'ao', 'eo', 'au', 'êu', 'âu', 'iu', 'ưu', "ai", "oi", "ôi", "ơi", "ui", "ưi", "ay", "ây", "ac", "âc", "ăc", "oc", "ôc", "uc", "ưc", "at", "ăt", "ât", "et", "êt", "it", "ot", "ôt", "ơt", "ut", "ưt", "an", "ăn", "ân", "en", "ên", "in", "on", "ôn", "ơn", "un", "ang", "ăng", "âng", "ong", "ông", "ung", "ưng", "ach", "êch", "ich", "am", "ăm", "âm", "em", "êm", "om", "ôm", "ơm", "im", "um", "ap", "ăp", "âp", "ep", "êp", "op", "ôp", "ơp", "ip", "up", "anh", "ênh", "inh", "ươu", "iêu", "yêu", "uôi", "ươi"
+        ]
+        let i = 0;
+        let btnRandom = document.querySelector('.btn-random')
+        let btnNext = document.querySelector('.btn-next')
+
+        let sound = document.querySelector('.sound')
+        let word = document.getElementById('word')
+
+        let btnView = document.querySelector('.btn-view')
+
+        btnRandom.onclick = (e) => {
+            word.style.display = "none";
+            let randomNumber = Math.floor(Math.random() * (words.length));
+            sound.innerHTML = `
+                    <audio controls>
+                        <source class="sound" src="./audio/${words[randomNumber]}.aac" type="audio/mpeg">
+                    </audio>`
+            word.innerHTML = words[randomNumber]
+        }
+        btnNext.onclick = (e) => {
+            if (i == words.length) {
+                i = 0;
+            }
+            sound.innerHTML = `
+                    <audio controls>
+                        <source class="sound" src="./audio/${words[i]}.aac" type="audio/mpeg">
+                    </audio>`
+            word.innerHTML = words[i]
+            i++;
+            word.style.display = "none";
+        }
+        btnView.onclick = (e) => {
+            word.style.display = "flex";
+        }
+    </script>
+
+</body>
+
+</html>
